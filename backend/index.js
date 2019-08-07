@@ -15,7 +15,7 @@ app.use(bodyParser.json());
 app.use(cors({ origin: '*' }));
 
 app.get('/', (req, res) => {
-    apiCall.getApi().then(data => {
+    apiCall.getApi('allRecipes').then(data => {
         res.send(data)
     })
 //   res.send('Welcome to File Manager Server API');

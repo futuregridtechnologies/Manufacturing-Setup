@@ -1,9 +1,9 @@
 var rp = require('request-promise');
 
-function getApi() {
+let url = 'http://ec2-18-219-87-48.us-east-2.compute.amazonaws.com:3000/';
+function getApi(endpoint) {
     var options = {
-        uri: 'http://ec2-18-219-87-48.us-east-2.compute.amazonaws.com:3000/allRecipes',
-
+        uri: url + endpoint,
         headers: {
             'User-Agent': 'Request-Promise'
         },
