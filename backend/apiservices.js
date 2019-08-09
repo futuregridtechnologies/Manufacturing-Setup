@@ -20,7 +20,27 @@ function getApi(endpoint) {
     })
 }
 
+function postApi(endpoint, postBody) {
+    return new Promise((resolve, reject) => {
+        var options = {
+            method: 'POST',
+            uri: url + endpoint,
+            body: postBody,
+            json: true // Automatically stringifies the body to JSON
+        };
+         
+        rp(options)
+            .then(function (parsedBody) {
+                // POST succeeded...
+                resolve(parsedBody);
+            })
+            .catch(function (err) {
+                // POST failed...
+            });
+    })
+}
 
 module.exports = {
     getApi,
+    postApi
 }

@@ -7,7 +7,8 @@ function stripFile(result){
             stripFile(element.data);
         }
         let newRecipe = new Recipe(element.id, element.data);
-        newRecipe.display();
+        // newRecipe.display();
+        newRecipe.stripRecipe();
       });
 }
 
