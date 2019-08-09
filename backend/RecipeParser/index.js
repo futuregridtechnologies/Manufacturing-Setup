@@ -14,8 +14,10 @@ class Recipe {
         // Object.keys(this.data).map(item => {
         //     console.log(item)
         // })
-        // console.log(Object.keys(this.data));
-        console.log(this.data)
+        if (this.data !== undefined || this.data !== null) {
+            console.log(Object.keys(JSON.parse(this.data)));
+        }
+        // console.log(this.data)
     }
 }
 
