@@ -10,12 +10,7 @@ class Ingredient {
     }
 
     stripVariant() {
-        // console.log(this.data)
-        // console.log(this.ingredient);
-        // console.log(this.ingredientData)
-        // console.log(Object.keys(this.ingredientData[0].SERVING[0]));
         Object.keys(this.ingredientData[0].SERVING[0]).map(serving=>{
-            // console.log(this.ingredientData[0].SERVING[0][serving]);
             let newVariant = new IngredientVariant(this.ingredientData[0].NAME, this.ingredientData[0].SERVING[0][serving] + " " + this.ingredientData[0].MEASURE, this.ingredientData[0].PROCESSING, this.filePath)
             newVariant.display();
         })
