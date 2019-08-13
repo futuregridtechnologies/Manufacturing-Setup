@@ -26,6 +26,10 @@ const server = new GraphQLServer({
     resolvers
 })
 
-server.start(() => {
+const options = {
+  port : 5000,
+}
+
+server.start(options,({ port }) => {
     console.log("The server is up")
 })
