@@ -17,7 +17,7 @@ class Recipe {
                 let parsedData = JSON.parse(this.data);
                 let keys = Object.keys(parsedData);
                 keys.map(key => {
-                    let newIngredient = new Ingredient(key, parsedData);
+                    let newIngredient = new Ingredient(key, parsedData[key], this.filepath);
                     newIngredient.stripVariant();
                 })
             } catch (err) {
