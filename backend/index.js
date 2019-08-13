@@ -1,27 +1,31 @@
-const express = require('express');
-// let database = require('./database');
-const cors = require('cors');
-const apiCall = require('./apiservices');
-const recipesFile = require('./recipeFileData');
-const app = express();
-const port = 4000;
+let {
+  GraphQLServer
+} = require('graphql-yoga');
 
+// Type Definitions => Application Schema
+const typeDefs = `
+    type Query {
+        hello: String!
+    } 
+`
+// Scalar Types -> String, Boolean, Int, Float, ID --> unique identifier similar to String with differences
+// Custom Types ->
+// Resolvers => set of functions
 
-const bodyParser = require('body-parser');
-const http = require('http').Server(app);
+const resolvers = {
+    Query: {
+        hello :(parent, args, ctz, info) => {
+          return "Hello World";
+        },
+    },
 
+}
 
-app.use(bodyParser.urlencoded({ extended: false }));
-app.use(bodyParser.json());
-app.use(cors({ origin: '*' }));
+const server = new GraphQLServer({
+    typeDefs,
+    resolvers
+})
 
-app.get('/', (req, res) => {
-    apiCall.getApi('allRecipes').then(result => {
-      recipesFile.stripFile(result);
-      res.send(result)
-    })
-});
-
-http.listen(port, () => {
-  console.log('listening on *:4000');
-});
+server.start(() => {
+    console.log("The server is up")
+})
