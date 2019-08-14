@@ -20,6 +20,7 @@ MongoClient.connect(url, function(err, db) {
         }else{
             console.log("file added");
         }
+        db.close();
     }
 );
 });
