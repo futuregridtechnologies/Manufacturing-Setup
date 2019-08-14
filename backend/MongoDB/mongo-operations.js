@@ -46,7 +46,7 @@ function showAllVariants() {
     }, function (err, db) {
       if (err) throw err;
       var dbo = db.db("ma-app");
-      dbo.collection("variants-configuration").find({},
+      dbo.collection("variants-configuration").find({}).toArray(
         function (err, result) {
           if (err) {
             console.log(err);
