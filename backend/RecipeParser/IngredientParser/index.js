@@ -32,9 +32,10 @@ class IngredientVariant {
             name : this.name,
             quantity : this.quantity,
             processing : this.processing,
-            file : this.filePath
+            file : [this.filePath]
         }
-        console.log(ingredientVariant)
+        mongodb.addVariant(ingredientVariant);
+        // console.log(ingredientVariant)
     }
 }
 
