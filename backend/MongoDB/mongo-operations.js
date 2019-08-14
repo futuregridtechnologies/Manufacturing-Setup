@@ -38,8 +38,29 @@ function addVariant(ingredientVariant) {
     );
   });
 }
-// { $push: { <field1>: <value1>, ... } }
+
+function showAllVariants() {
+  return new Promise((resolve, reject) => {
+    MongoClient.connect(url, {
+      useNewUrlParser: true
+    }, function (err, db) {
+      if (err) throw err;
+      var dbo = db.db("ma-app");
+      dbo.collection("variants-configuration").find({},
+        function (err, result) {
+          if (err) {
+            console.log(err);
+          } else {
+            resolve(result)
+          }
+          db.close();
+        }
+      );
+    });
+  })
+}
 
 module.exports = {
-  addVariant
+  addVariant,
+  showAllVariants
 }
