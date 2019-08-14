@@ -2,13 +2,6 @@ const {
     ApolloClient
 } = require('apollo-boost');
 const fetch = require('node-fetch');
-// import fetch from 'node-fetch';
-// import {
-//     InMemoryCache
-// } from 'apollo-cache-inmemory';
-// import {
-//     HttpLink
-// } from 'apollo-link-http';
 const {InMemoryCache} = require('apollo-cache-inmemory');
 const {HttpLink} = require('apollo-link-http');
 const gql = require('graphql-tag');

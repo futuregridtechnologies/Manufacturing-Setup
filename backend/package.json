@@ -19,6 +19,7 @@
     "express": "^4.17.1",
     "graphql": "^14.4.2",
     "graphql-tag": "^2.10.1",
+    "mongodb": "^3.3.0",
     "node-fetch": "^2.6.0",
     "request": "^2.88.0",
     "request-promise": "^4.2.4"

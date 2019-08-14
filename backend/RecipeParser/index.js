@@ -11,7 +11,6 @@ class Recipe {
     }
 
     stripRecipe() {
-        // console.log(this.data)
         if (this.data !== "null" && this.data) {
             try {
                 let parsedData = JSON.parse(this.data);

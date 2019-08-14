@@ -1,3 +1,5 @@
+const mongodb = require('../../MongoDB/mongo-operations');
+
 class Ingredient {
     constructor(ingredient, ingredientData, filePath) {
         this.ingredient = ingredient;
@@ -22,7 +24,7 @@ class IngredientVariant {
         this.name = name;
         this.quantity = quantity;
         this.processing = processing;
-        this.filePath = filePath
+        this.filePath = filePath;
     }
 
     display(){
