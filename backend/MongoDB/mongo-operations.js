@@ -12,7 +12,7 @@ MongoClient.connect(url, function(err, db) {
   // });
   dbo.collection("variants-configuration").update(
     {name : myobj.name, quantity: myobj.quantity, processing: myobj.processing},
-    {$push: {file: myobj.file}},
+    {$addToSet: {file: myobj.file}},
     {upsert: true, safe: false},
     function(err,data){
         if (err){
