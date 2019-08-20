@@ -18,16 +18,16 @@ const client = new ApolloClient({
 })
 
 class Variants extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            variants: [],
-        }
+  constructor(props) {
+    super(props);
+    this.state = {
+      variants: [],
     }
+  }
 
-    displayVariants = () => {
+  displayVariants = () => {
 
-        const GET_VARIANTS = gql`
+    const GET_VARIANTS = gql`
         query ingredientVariants($after: String) {
           ingredientVariants{
           name
@@ -37,22 +37,23 @@ class Variants extends Component {
         }
         }
       `;
-        const { data, loading, error } = useQuery(GET_VARIANTS);
-        data.ingredientVariants.map(variant => {
-            return <Variant name={variant.name} processing={variant.processing} quantity={variant.quantity} files={variant.file} />
-        })
-    }
+    const { data, loading, error } = useQuery(GET_VARIANTS);
+    data.ingredientVariants.map(variant => {
+      return <Variant name={variant.name} processing={variant.processing} quantity={variant.quantity} files={variant.file} />
+    })
+  }
 
-    componentDidMount() {
+  componentDidMount() {
 
-    }
-    render() {
-        return (
-            <div className="variants">
-                {this.displayVariants()}
-            </div>
-        );
-    }
+  }
+  
+  render() {
+    return (
+      <div className="variants">
+        {this.displayVariants()}
+      </div>
+    );
+  }
 }
 
 export default Variants;
