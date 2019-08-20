@@ -23,7 +23,7 @@ client
     .query({
         query: gql `
         query GetRecipes{
-            contentWithFilesData(path : "./filesystem/Recipes"){
+            getFolderWithFiles(path : "./filesystem/Recipes"){
                 children {
                     name
                     path
@@ -37,9 +37,9 @@ client
         }
     `
     })
-    .then(result => {
+    .then((result) => {
         // console.log(result.data.contentWithFilesData.children);
-        recipesFile.stripFile(result.data.contentWithFilesData.children);
+        recipesFile.stripFile(result.data.getFolderWithFiles.children);
 
 
     })
