@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import '../App.css';
-class App extends Component {
+class Variant extends Component {
     constructor(props) {
         super(props);
     }
@@ -9,6 +9,7 @@ class App extends Component {
 
     }
     render() {
+        console.log(this.props)
         return (
             <div className="variant">
                 {this.props.name}
@@ -20,4 +21,4 @@ class App extends Component {
     }
 }
 
-export default App;
+export default Variant;

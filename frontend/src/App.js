@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
-import Variants from './pages/variants'
+import Variants from './pages/Variants'
 class App extends Component {
   render() {
     return (
