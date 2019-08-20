@@ -9,7 +9,7 @@ import '../App.css';
 
 const cache = new InMemoryCache();
 const link = new HttpLink({
-  uri: 'http://localhost:4000/'
+  uri: 'http://localhost:5000/'
 })
 
 const client = new ApolloClient({
@@ -46,7 +46,7 @@ class Variants extends Component {
   componentDidMount() {
 
   }
-  
+
   render() {
     return (
       <div className="variants">
