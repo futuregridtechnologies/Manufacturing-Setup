@@ -5,6 +5,8 @@ import { ApolloClient } from 'apollo-client';
 import { InMemoryCache } from 'apollo-cache-inmemory';
 import { HttpLink } from 'apollo-link-http';
 import '../App.css';
+import { Table } from 'react-bootstrap';
+
 
 const cache = new InMemoryCache();
 const link = new HttpLink({
@@ -27,7 +29,7 @@ class Variants extends Component {
   displayVariants = () => {
     console.log("HERE")
     return this.state.variants.map(variant => {
-      return <Variant name={variant.name} processing={variant.processing} quantity={variant.quantity} files={variant.file} />
+      return(<Variant name={variant.name} processing={variant.processing} quantity={variant.quantity} files={variant.file} /> )
     })
   }
 
@@ -55,9 +57,21 @@ class Variants extends Component {
   render() {
     console.log(this.state.variants.length)
     return (
-      <div className="variants">
-        {this.displayVariants()}
-      </div>
+      <Table striped bordered hover>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Quantity</th>
+      <th>Processing</th>
+      <th>No of files </th>
+    </tr>
+  </thead>
+  <tbody>
+  {this.displayVariants()}
+
+  </tbody>
+</Table>
+
     );
   }
 }
