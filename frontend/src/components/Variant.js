@@ -1,21 +1,26 @@
 import React, { Component } from 'react';
+import { Card } from 'react-bootstrap';
+
 import '../App.css';
 class Variant extends Component {
     constructor(props) {
         super(props);
+        console.log(props);
     }
-
     componentDidMount() {
 
     }
     render() {
-        console.log(this.props)
         return (
             <div className="variant">
-                {this.props.name}
-                {this.props.quantity}
-                {this.props.processing}
-                {this.props.files.length}
+                <Card>
+                    <Card.Body>
+                        <Card.Text>
+                            {this.props.name} <span>   </span>  {this.props.quantity} <span>   </span>  {this.props.processing} <span>   </span>  {this.props.files.length}
+                        </Card.Text>
+                    </Card.Body>
+                </Card>
+
             </div>
         );
     }
