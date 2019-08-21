@@ -6,6 +6,7 @@ import { InMemoryCache } from 'apollo-cache-inmemory';
 import { HttpLink } from 'apollo-link-http';
 import '../App.css';
 import { Table } from 'react-bootstrap';
+import gridSchema from '../utils/table-data'
 
 
 const cache = new InMemoryCache();
@@ -50,7 +51,8 @@ class Variants extends Component {
         query: GET_VARIANTS,
       })
       .then(result => {
-        this.setState({ variants: result.data.ingredientVariants })
+        this.setState({ variants: result.data.ingredientVariants });
+        console.log(gridSchema(result.data.ingredientVariants))
       });
   }
 
@@ -63,7 +65,7 @@ class Variants extends Component {
       <th>Name</th>
       <th>Quantity</th>
       <th>Processing</th>
-      <th>No of files </th>
+      <th>Used In</th>
     </tr>
   </thead>
   <tbody>
