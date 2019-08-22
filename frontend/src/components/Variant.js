@@ -28,7 +28,7 @@ class Variant extends Component {
         return data.map(processingData =>{
             console.log(processingData)
             let returnDivs = [];
-            returnDivs.push (<div style = {{gridRow: 'span ' + processingData.quantityLayer.length, gridColumn:2}} className="item2">{processingData.processing} <br /> </div> )
+            returnDivs.push (<div style = {{gridRow: 'span ' + processingData.quantityLayer.length, gridColumn:2}} className="item2">{processingData.processing} <br /> {processingData.numberOfRecipes} Recipes</div> )
             returnDivs.push(this.displayQuantityLayer(processingData.quantityLayer, parentData));
             return returnDivs
         })
@@ -42,7 +42,7 @@ class Variant extends Component {
         console.log(nameRowWidth)
         return (
             <div className="grid-container">
-            <div style = {{gridRow: '1 / span ' + nameRowWidth}}>{this.props.data.name} <br/>  Recipes</div>
+            <div style = {{gridRow: '1 / span ' + nameRowWidth}}>{this.props.data.name} <br/> {this.props.data.numberOfRecipes} Recipes</div>
             {this.displayProcessingLayer(this.props.data.processingLayer, this.props.data)}
 
           </div>
