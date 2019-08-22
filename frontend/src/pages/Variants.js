@@ -30,7 +30,9 @@ class Variants extends Component {
   displayVariants = () => {
     console.log("HERE")
     return this.state.variants.map(variant => {
-      return(<Variant name={variant.name} processing={variant.processing} quantity={variant.quantity} files={variant.file} /> )
+      // console.log(variant);
+      return <Variant data={variant} />
+      // return (<Variant name={variant.name} processing={variant.processing} quantity={variant.quantity} files={variant.file} />)
     })
   }
 
@@ -51,29 +53,18 @@ class Variants extends Component {
         query: GET_VARIANTS,
       })
       .then(result => {
-        this.setState({ variants: result.data.ingredientVariants });
-        console.log(gridSchema(result.data.ingredientVariants))
+        // this.setState({ variants: result.data.ingredientVariants });
+        // console.log(gridSchema(result.data.ingredientVariants))
+        this.setState({variants : gridSchema(result.data.ingredientVariants)});
       });
   }
 
   render() {
-    console.log(this.state.variants.length)
+    console.log(this.state.variants)
     return (
-      <Table striped bordered hover>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Quantity</th>
-      <th>Processing</th>
-      <th>Used In</th>
-    </tr>
-  </thead>
-  <tbody>
-  {this.displayVariants()}
-
-  </tbody>
-</Table>
-
+      <div className='variants'>
+      {this.displayVariants()}
+      </div>
     );
   }
 }
