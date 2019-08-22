@@ -33,16 +33,16 @@ function getProcessingLayer(variants, ingredientNamesSet) {
         object.numberOfRecipes = 0;
         let processingLayer = [];
         let processingArray = Array.from(processingSet);
-        object.processingLayer  = processingArray.map(processingData => {
+        object.processingLayer = processingArray.map(processingData => {
             let processingLayerObject = {};
             processingLayerObject.processing = processingData;
             processingLayerObject.quantityLayer = [];
             processingLayerObject.numberOfRecipes = 0;
             variant.map(variantData => {
-                if(variantData.processing == processingData){
+                if (variantData.processing == processingData) {
                     let quantityLayerObject = {};
                     quantityLayerObject.quantity = variantData.quantity;
-                    quantityLayerObject.files  = variantData.file;
+                    quantityLayerObject.files = variantData.file;
                     // return quantityLayerObject;
                     processingLayerObject.numberOfRecipes += variantData.file.length
                     processingLayerObject.quantityLayer.push(quantityLayerObject);
