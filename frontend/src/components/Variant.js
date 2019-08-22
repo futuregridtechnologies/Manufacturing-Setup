@@ -26,9 +26,9 @@ class Variant extends Component {
         return data.map(quantityData => {
             try {
                 return (<div className="item2">
-                    <div className="item2" style={{ float: "left", marginLeft: "40px", opacity: 1 }}>{quantityData.quantity} </div>
+                    <div className="item2" style={{ float: "left", margin : 'auto' ,marginLeft: "40px", opacity: 1 }}>{quantityData.quantity} </div>
                     <OverlayTrigger trigger="hover" placement="bottom" overlay={this.popover(quantityData.files)}>
-                    <span className="item3 light">{quantityData.files.length + " Recipes"} </span>
+                    <div className="item3 light" style = {{textAlign: "center", margin: "auto inherit"}}>{quantityData.files.length + " Recipes"} </div>
                 </OverlayTrigger>
                 </div>)
             }
