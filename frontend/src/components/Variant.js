@@ -3,15 +3,7 @@ import { Card, OverlayTrigger, Popover, Button } from 'react-bootstrap';
 
 import '../App.css';
 
-const popover = (
-    <Popover id="popover-basic">
-        <Popover.Title as="h3">Popover right</Popover.Title>
-        <Popover.Content>
-            And here's some <strong>amazing</strong> content. It's very engaging.
-            right?
-      </Popover.Content>
-    </Popover>
-);
+
 
 class Variant extends Component {
     constructor(props) {
@@ -21,13 +13,23 @@ class Variant extends Component {
     componentDidMount() {
 
     }
+    popover = (files)=> (
+        <Popover id="popover-basic">
+            <Popover.Title as="h3" style={{textAlign : 'center'}}>Files</Popover.Title>
+            <Popover.Content>
+                {files.map(file =><div>{file.split('/')[file.split('/').length - 1]} <hr/></div>)}
+          </Popover.Content>
+        </Popover>
+    );
     displayQuantityLayer(data, parentData) {
         console.log(data)
         return data.map(quantityData => {
             try {
                 return (<div className="item2">
                     <div className="item2" style={{ float: "left", marginLeft: "40px", opacity: 1 }}>{quantityData.quantity} </div>
+                    <OverlayTrigger trigger="hover" placement="bottom" overlay={this.popover(quantityData.files)}>
                     <span className="item3 light">{quantityData.files.length + " Recipes"} </span>
+                </OverlayTrigger>
                 </div>)
             }
             catch (error) {
@@ -59,10 +61,6 @@ class Variant extends Component {
             <div className="grid-container">
                 <div style={{ gridRow: '1 / span ' + nameRowWidth }}><div>{this.props.data.name}</div> <br /> <span className="light">{this.props.data.numberOfRecipes} Recipes </span></div>
                 {this.displayProcessingLayer(this.props.data.processingLayer, this.props.data)}
-                <OverlayTrigger trigger="hover" placement="bottom" overlay={popover}>
-                    <Button variant="success">Click me to see</Button>
-                </OverlayTrigger>
-
             </div>
         );
     }
