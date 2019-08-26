@@ -60,3 +60,7 @@
 .light {
   opacity: 0.5;
 }
+
+.item3 {
+  grid-column: 3;
+}
