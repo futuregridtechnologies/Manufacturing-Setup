@@ -32,13 +32,9 @@ class ProcessingLayer extends Component {
             return (<div className="item2">
                 <div className="item3" style={{ float: "left", margin: 'auto', marginLeft: "40px", opacity: 1 }}>{quantityData.quantity} </div>
                 <OverlayTrigger trigger="click" placement="bottom" overlay={this.popover(quantityData.files)}>
-                    <div className="item3 light" style={{ textAlign: "center", margin: "auto inherit" }}>{quantityData.files.length + " Recipes"} </div>
+                    <div className="item3" style={{ textAlign: "center", margin: "auto inherit" }}>{quantityData.files.length + " Recipes"} </div>
                 </OverlayTrigger>
             </div>)
-            // console.log(parentData)
-            // console.log(quantityData)
-            // console.log(error)
-
         })
     }
 
@@ -47,9 +43,6 @@ class ProcessingLayer extends Component {
             this.setState({ [column]: downArrow });
         } else {
             this.setState({ [column]: rightArrow });
-            if (column == 'processingColumn') {
-                this.setState({ [column]: rightArrow })
-            }
         }
     }
 

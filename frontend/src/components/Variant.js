@@ -9,44 +9,32 @@ import downArrow from '../assets/down-arrow.png';
 class Variant extends Component {
     constructor(props) {
         super(props);
-        // console.log(props);
         this.state = {
             name : rightArrow,
-            nameRowHeight : 1,
         }
     }
     componentDidMount() {
 
     }
-    
 
-
-    toggleArrow  = (column) =>{
+    toggleArrow = (column) => {
         if(this.state[column] == rightArrow) {
             this.setState({[column] : downArrow});
         } else {
             this.setState({[column] : rightArrow});
-            if(column == 'processingColumn') {
-                this.setState({[column] : rightArrow})
-            }
         }
     }
 
     displayProcessingLayer(data, parentData) {
         if(this.state.name == rightArrow){
             let returnDivs = [];
-            returnDivs.push(<div style={{ gridColumn: 2 }} className="item2"> <div>{data.length + " Processing"}</div> </div>);
-            returnDivs.push(<div className='item2'><div>{data.reduce((sum, processingData) => sum = sum + processingData.quantityLayer.length , 0) + " Variants"} </div></div>)
+            returnDivs.push(<div style={{ gridColumn: 2 }} className="item2"> <div>{data.length + " Processing" + (data.length > 1? "s" : "")}</div> </div>);
+            returnDivs.push(<div className='item2'><div>{data.reduce((sum, processingData) => sum = sum + processingData.quantityLayer.length , 0) + " Variants"} </div> </div>)
             return returnDivs;
         }
         return data.map(processingData => {
-            // console.log(processingData)
             let returnDivs = [];
             returnDivs.push(this.displayEachProcessing(processingData));
-            // returnDivs.push(<div style={{ gridRow: 'span ' + processingData.quantityLayer.length, gridColumn: 2 }} className="item2"> <div>{processingData.processing}</div> <br /> <span className="light" style={{ marginTop: "5px" }}>{processingData.numberOfRecipes} Recipes</span></div>)
-            // returnDivs.push(<div style={{ gridRow: 'span ' + processingData.quantityLayer.length, gridColumn: 2 }} className="item2"> <div><img src = {this.state.processingColumn}  style={{width: 10, height: 10}} onClick={() =>{this.toggleArrow('processingColumn')}}/>{processingData.processing}</div> <br /> <span className="light" style={{ marginTop: "5px" }}>{processingData.numberOfRecipes} Recipes</span></div>)
-            // returnDivs.push(<div style={this.processingDataColumnSpan(processingData.quantityLayer.length)} className="item2"> <div><img src = {this.state.processingColumn}  style={{width: 10, height: 10}} onClick={() =>{this.toggleArrow('processingColumn')}}/>{processingData.processing}</div> <br /> <span className="light" style={{ marginTop: "5px" }}>{processingData.numberOfRecipes} Recipes</span></div>)
-            // returnDivs.push(this.displayQuantityLayer(processingData.quantityLayer, parentData));
             return returnDivs
         })
     }
@@ -71,28 +59,13 @@ class Variant extends Component {
     }
 
     getRowSpan(column, rowHeight, data){
-        // if(this.state[column] === rightArrow && this.state.processingColumn === rightArrow){
-        //     return ({gridRow : '1/ span 1'});
-        // } else if(this.state.name === downArrow && this.state.processingColumn === downArrow){
-        //     return({ gridRow: '1 / span ' + rowHeight })
-        // }
-        // //  else if(this.state.name === downArrow && this.state.processingColumn == rightArrow) {
-            
-        // // } 
-        // else {
-
-        // }
         return({ gridRow: '1 / span ' + rowHeight })
-
     }
 
     processingDataColumnSpan(spanRows) {
         return ({gridRow: 'span ' + spanRows,
                 gridColumn : 2})
-        // if(this.state.)
     }
 }
-
-
 
 export default Variant;

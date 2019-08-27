@@ -56,8 +56,8 @@
   text-align: center;
   padding: 20px 0;
   font-size: 12px;
-  grid-template-columns: repeat(auto-fit, minmax(200px,1fr));
 }
+
 .light {
   opacity: 0.5;
 }
