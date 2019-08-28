@@ -1,0 +1,17 @@
+{
+    name : 'potato',
+    available_processing : [
+
+        {
+            name : 'raw', // means raw
+            yield : 100%
+        },
+        {
+            name : "boiled",
+            yield : 150%
+        },
+        {
+            name : "fried",
+            "yield" : "50%"
+        }
+    ]

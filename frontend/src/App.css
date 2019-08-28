@@ -27,7 +27,7 @@
   display: grid;
   grid-template-columns: 25% 25% 50%;
   grid-gap: 1px;
-  background-color: #000000;
+  /* background-color: #000000; */
   padding: 1px;
   font-family: 'Roboto', sans-serif;
 }
@@ -69,4 +69,15 @@
   text-align: center;
   padding: 20px 0;
   font-size: 12px;
+}
+
+.App {
+  background-image: linear-gradient(117deg, #3023ae, #c86dd7);
+}
+
+
+#name-container.stick {
+  position: fixed;
+  top: 0;
+  z-index: 10000;
 }

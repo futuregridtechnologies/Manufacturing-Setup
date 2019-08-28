@@ -62,7 +62,7 @@ class Variants extends Component {
   render() {
     console.log(this.state.variants)
     return (
-      <div className='variants'>
+      <div className='variants' style = {{ width : '80%', height : "80%", margin: "auto"}}>
       {this.displayVariants()}
       </div>
     );

@@ -38,16 +38,24 @@ class ProcessingLayer extends Component {
         })
     }
 
-    toggleArrow = (column) => {
+    toggleArrow = (column, height) => {
         if (this.state[column] == rightArrow) {
             this.setState({ [column]: downArrow });
+            this.props.changeNameHeight(height, '+')
         } else {
             this.setState({ [column]: rightArrow });
+            this.props.changeNameHeight(height, '-')
         }
     }
 
     processingDataColumnSpan(spanRows) {
         console.log(spanRows)
+        if(this.state.processingColumn === rightArrow) {
+            return ({
+                gridColumn : 2,
+                gridRow : 'span ' + 1,
+            })
+        }
         return ({
             gridRow: 'span ' + spanRows,
             gridColumn: 2
@@ -58,7 +66,7 @@ class ProcessingLayer extends Component {
     render() {
         // return(null);
         let returnDivs = [];
-        returnDivs.push(<div style={this.processingDataColumnSpan(this.props.processingData.quantityLayer.length)} className="item2"> <div><img src={this.state.processingColumn} style={{ width: 10, height: 10 }} onClick={() => { this.toggleArrow('processingColumn') }} />{this.props.processingData.processing}</div> <br /> <span className="light" style={{ marginTop: "5px" }}>{this.props.processingData.numberOfRecipes} Recipes</span></div>)
+        returnDivs.push(<div style={this.processingDataColumnSpan(this.props.processingData.quantityLayer.length)} className="item2"> <div><img src={this.state.processingColumn} style={{ width: 10, height: 10 }} onClick={() => { this.toggleArrow('processingColumn', this.props.processingData.quantityLayer.length) }} />{this.props.processingData.processing}</div> <br /> <span className="light" style={{ marginTop: "5px" }}>{this.props.processingData.numberOfRecipes} Recipes</span></div>)
         if (this.state.processingColumn === downArrow) {
             returnDivs.push(this.displayQuantityLayer(this.props.processingData.quantityLayer));
         } else {

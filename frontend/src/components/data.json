@@ -1,0 +1,36 @@
+{
+    "file-data": {
+        "id": "xyz-abc"
+    },
+    "meta-info": {
+        "recipe-author": "Suresh"
+    },
+    "variants": [
+        {
+            "Index": 1,
+            "Ingredient-Name": "Butter",
+            "Default-Processing": "Raw",
+            "Serving": [
+                {
+                    "Size": 2,
+                    "Quantity": 112.5
+                },
+                {
+                    "Size": 4,
+                    "Quantity": 150
+                }
+            ],
+            "Measure": "GMS",
+            "Skippable": true
+        },
+        {
+            "Index" : 2,
+            "Reference" : "./filesystem/Ingredients/Chicken.ing"
+
+        }
+    ],
+    "cookingInfo": [
+        {},
+        {}
+    ]
+}
