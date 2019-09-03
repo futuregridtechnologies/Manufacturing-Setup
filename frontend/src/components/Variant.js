@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
 import { Card, OverlayTrigger, Popover, Button } from 'react-bootstrap';
 import ProcessingLayer from './ProcessingLayer';
+import { StickyContainer, Sticky } from 'react-sticky';
+
 import '../App.css';
 import rightArrow from '../assets/right-arrow.png';
 import downArrow from '../assets/down-arrow.png';
-import $ from 'jquery'; 
+import $ from 'jquery';
 
 
 
@@ -14,23 +16,25 @@ class Variant extends Component {
         this.state = {
             name: rightArrow,
             nameRowHeight: 0,
+            isPaneOpen: false,
+            isPaneOpenLeft: false
         }
     }
     componentDidMount() {
-        $(function () {
-            $(window).scroll(sticky_relocate);
-            sticky_relocate();
+        // $(function () {
+        //     $(window).scroll(sticky_relocate);
+        //     sticky_relocate();
 
-            function sticky_relocate () {
-                var window_top = $(window).scrollTop();
-                var div_top = $('#sticky-anchor').offset().top;
-                if (window_top > div_top && this.state.name == downArrow) {
-                    $('#name-container').addClass('stick');
-                } else {
-                    $('#name-container').removeClass('stick');
-                }
-            }
-        });
+        //     function sticky_relocate () {
+        //         var window_top = $(window).scrollTop();
+        //         var div_top = $('#sticky-anchor').offset().top;
+        //         if (window_top > div_top && this.state.name == downArrow) {
+        //             $('#name-container').addClass('stick');
+        //         } else {
+        //             $('#name-container').removeClass('stick');
+        //         }
+        //     }
+        // });
     }
 
     changeNameHeight = (height, sign) => {
@@ -77,9 +81,18 @@ class Variant extends Component {
         console.log(nameRowWidth)
         return (
             <div className="grid-container">
-                
-                <div className="item2" id="name-container" style={this.getRowSpan('name', nameRowWidth, this.props.data)}><div> <img src={this.state.name} style={{ width: 10, height: 10 }} onClick={() => { this.toggleArrow('name', this.props.data.processingLayer.length) }} /> 
-                    {this.props.data.name}</div> <br /> <span className="light">{this.props.data.numberOfRecipes} Recipes </span></div>
+
+                <div className="item2" id="name-container" style={this.getRowSpan('name', nameRowWidth, this.props.data)}>
+                    <div>
+
+                        <StickyContainer>
+                            <Sticky>{({ style }) => <span style={style}> <img src={this.state.name} style={{ width: 10, height: 10 }} onClick={() => { this.toggleArrow('name', this.props.data.processingLayer.length) }} />{this.props.data.name}</span>}</Sticky>
+                        </StickyContainer>
+                    </div>
+                    <br /> <span className="light">{this.props.data.numberOfRecipes} Recipes </span>
+
+
+                </div>
                 {this.displayProcessingLayer(this.props.data.processingLayer, this.props.data)}
             </div>
         );
