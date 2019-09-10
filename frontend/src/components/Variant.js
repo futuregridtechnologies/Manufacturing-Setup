@@ -84,7 +84,6 @@ class Variant extends Component {
 
                 <div className="item2" id="name-container" style={this.getRowSpan('name', nameRowWidth, this.props.data)}>
                     <div>
-
                         <StickyContainer>
                             <Sticky>{({ style }) => <span style={style}> <img src={this.state.name} style={{ width: 10, height: 10 }} onClick={() => { this.toggleArrow('name', this.props.data.processingLayer.length) }} />{this.props.data.name}</span>}</Sticky>
                         </StickyContainer>

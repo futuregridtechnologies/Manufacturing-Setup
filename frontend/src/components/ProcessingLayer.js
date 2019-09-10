@@ -4,17 +4,24 @@ import { Card, OverlayTrigger, Popover, Button } from 'react-bootstrap';
 
 import rightArrow from '../assets/right-arrow.png';
 import downArrow from '../assets/down-arrow.png';
+import { default as Layover } from './Layover.js';
 
 class ProcessingLayer extends Component {
     constructor(props) {
         super(props);
-        console.log(props)
         this.state = {
             processingColumn: rightArrow,
+            isPaneOpen: false,
+
         }
     }
     componentDidMount() {
 
+    }
+
+
+    handleClose = () => {
+        this.setState({isPaneOpen : false})
     }
 
     popover = (files) => (
@@ -26,15 +33,19 @@ class ProcessingLayer extends Component {
         </Popover>
     );
 
+    layover = (files) => {
+        console.log(files);
+        return <Layover data={files} handleClose = {this.handleClose} stateData = {this.state.isPaneOpen}/>
+    }
+
     displayQuantityLayer(data) {
         console.log(data)
         return data.map(quantityData => {
             return (<div className="item2">
                 <div className="item3" style={{ float: "left", margin: 'auto', marginLeft: "40px", opacity: 1 }}>{quantityData.quantity} </div>
-                <OverlayTrigger trigger="click" placement="bottom" overlay={this.popover(quantityData.files)}>
-                    <div className="item3" style={{ textAlign: "center", margin: "auto inherit" }}>{quantityData.files.length + " Recipes"} </div>
-                </OverlayTrigger>
-            </div>)
+                    <div className="item3" style={{ textAlign: "center", margin: "auto inherit" }} onClick = {()=>{this.setState({isPaneOpen : true})}}>{quantityData.files.length + " Recipes"} </div>
+                    {(this.state.isPaneOpen ? this.layover(quantityData.files) : null)}
+                    </div>)
         })
     }
 
