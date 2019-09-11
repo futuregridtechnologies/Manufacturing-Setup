@@ -12,13 +12,11 @@ class ProcessingLayer extends Component {
         this.state = {
             processingColumn: rightArrow,
             isPaneOpen: false,
-
         }
     }
     componentDidMount() {
 
     }
-
 
     handleClose = () => {
         this.setState({isPaneOpen : false})
@@ -83,7 +81,7 @@ class ProcessingLayer extends Component {
         } else {
             returnDivs.push(<div className="item2"> {this.props.processingData.quantityLayer.length + ' items'}</div>)
         }
-        console.log(returnDivs)
+        console.log(returnDivs);
         return returnDivs;
     }
 }
