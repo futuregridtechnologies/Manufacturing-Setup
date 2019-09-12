@@ -5,6 +5,8 @@ import { Card, OverlayTrigger, Popover, Button } from 'react-bootstrap';
 import rightArrow from '../assets/right-arrow.png';
 import downArrow from '../assets/down-arrow.png';
 import { default as Layover } from './Layover.js';
+import QuantityLayer from './QuantityLayer';
+
 
 class ProcessingLayer extends Component {
     constructor(props) {
@@ -18,9 +20,7 @@ class ProcessingLayer extends Component {
 
     }
 
-    handleClose = () => {
-        this.setState({isPaneOpen : false})
-    }
+  
 
     popover = (files) => (
         <Popover id="popover-basic">
@@ -38,14 +38,25 @@ class ProcessingLayer extends Component {
 
     displayQuantityLayer(data) {
         console.log(data)
+        // return data.map(quantityData => {
+        //     return (<div className="item2">
+        //         <div className="item3" style={{ float: "left", margin: 'auto', marginLeft: "40px", opacity: 1 }}>{quantityData.quantity} </div>
+        //             <div className="item3" style={{ textAlign: "center", margin: "auto inherit" }} onClick = {()=>{this.setState({isPaneOpen : true})}}>{quantityData.files.length + " Recipes"} </div>
+        //             {(this.state.isPaneOpen ? this.layover(quantityData.files) : null)}
+        //             </div>)
+        // })
         return data.map(quantityData => {
-            return (<div className="item2">
-                <div className="item3" style={{ float: "left", margin: 'auto', marginLeft: "40px", opacity: 1 }}>{quantityData.quantity} </div>
-                    <div className="item3" style={{ textAlign: "center", margin: "auto inherit" }} onClick = {()=>{this.setState({isPaneOpen : true})}}>{quantityData.files.length + " Recipes"} </div>
-                    {(this.state.isPaneOpen ? this.layover(quantityData.files) : null)}
-                    </div>)
+            let returnDivs = [];
+            returnDivs.push(this.displayEachQuantity(quantityData));
+            return returnDivs
         })
     }
+
+    displayEachQuantity(quantityData) {
+        return <QuantityLayer quantityData={quantityData}  />
+    }
+
+
 
     toggleArrow = (column, height) => {
         if (this.state[column] == rightArrow) {
@@ -69,7 +80,6 @@ class ProcessingLayer extends Component {
             gridRow: 'span ' + spanRows,
             gridColumn: 2
         })
-        // if(this.state.)
     }
 
     render() {

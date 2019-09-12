@@ -13,6 +13,15 @@ class Layover extends Component {
         Modal.setAppElement(this.el);
     }
 
+    placeFiles = () =>    {     
+        let returnArray = [];
+        this.props.data.forEach(element =>{
+         returnArray.push(<li>{element}</li>)
+    })
+    return returnArray
+ 
+ }
+
     render() {
         console.log(this.props);
         return (
@@ -32,9 +41,8 @@ class Layover extends Component {
 
                     <div>
                     <ul>
-                        {this.props.data.map(file => {
-                            <li>{file}</li>
-                        })}
+                        {this.placeFiles()}                   
+                       
                     </ul>
                     </div>
                 </SlidingPane>
@@ -43,5 +51,10 @@ class Layover extends Component {
         );
     }
 }
+
+
+// {this.props.data.forEach(file => 
+//     <li>{file}</li>
+// )}
 
 export default Layover;
